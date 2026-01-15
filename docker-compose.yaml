@@ -16,7 +16,7 @@ x-airflow-common:
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
     _PIP_ADDITIONAL_REQUIREMENTS: ''
     SPARK_HOME: /opt/spark
-    JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
+    JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
     PYSPARK_PYTHON: /usr/local/bin/python
     SPARK_MASTER_URL: spark://spark-master:7077
   volumes:
