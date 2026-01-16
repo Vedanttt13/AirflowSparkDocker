@@ -14,9 +14,6 @@ x-airflow-common: &airflow-common
     - postgres
   networks:
     - airflow-spark-network
-  environment:
-    - PYSPARK_PYTHON=/usr/local/bin/python3
-    - PYSPARK_DRIVER_PYTHON=/usr/local/bin/python3
 
 services:
   spark-master:
@@ -32,10 +29,11 @@ services:
       - SPARK_RPC_ENCRYPTION_ENABLED=no
       - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
       - SPARK_SSL_ENABLED=no
-      - PYSPARK_PYTHON=python3
-      - PYSPARK_DRIVER_PYTHON=python3
+      - PYSPARK_PYTHON=/usr/bin/python3
+      - PYSPARK_DRIVER_PYTHON=/usr/bin/python3
     volumes:
       - ./jobs:/opt/spark/jobs
+      - ./jobs:/opt/airflow/jobs  # ADD THIS - same path as Airflow uses
     networks:
       - airflow-spark-network
 
@@ -54,10 +52,11 @@ services:
       - SPARK_RPC_ENCRYPTION_ENABLED=no
       - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
       - SPARK_SSL_ENABLED=no
-      - PYSPARK_PYTHON=python3
-      - PYSPARK_DRIVER_PYTHON=python3
+      - PYSPARK_PYTHON=/usr/bin/python3
+      - PYSPARK_DRIVER_PYTHON=/usr/bin/python3
     volumes:
       - ./jobs:/opt/spark/jobs
+      - ./jobs:/opt/airflow/jobs  # ADD THIS - same path as Airflow uses
     networks:
       - airflow-spark-network
 
